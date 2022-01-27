@@ -8,10 +8,11 @@ using namespace std;
 using namespace System;
 
 int main() {
-  Caracter *obj;
-  obj = new Caracter();
 
   srand(time_t(NULL));
+
+  Caracter *obj;
+  obj = new Caracter();
 
   int posX = 2 + rand() % 70;
   int posY = 2 + rand() % 20;
