@@ -9,7 +9,10 @@ Caracter::Caracter() {
   this->x = 0;
   this->y = 0;
   this->dx = new int;
+  this->dy = new int;
+  this->sentido = true; // true: horario false: anti horario
   *(this->dx) = 1;
+  *(this->dy) = 1;
 }
 
 void Caracter::setX(int x) {
@@ -35,7 +38,12 @@ void Caracter::mover() {
     *(this->dx) = 1; // cambiar la direccion del movimiento
   }
 
+  //para el desplazamiento en y
+  if ((this->y + *(this->dy)> 30) || (this->y + *(this->dy) < 0)) {
+        *(this->dx) *= -1; // cambiar la direccion del movimiento
+  }
   this->x += *(this->dx);
+  this->y += *(this->dy);
 }
 
 void Caracter::mostrar() {
@@ -43,6 +51,15 @@ void Caracter::mostrar() {
   cout << (char)2;
 }
 
+void Caracter::setSentido(bool sentido) {
+  if (this->sentido == true) {
+    this->sentido = false;
+  } else {
+    this->sentido = true;
+  }
+}
+
 Caracter::~Caracter() {
   delete this->dx;
+  delete this->dy;
 }
